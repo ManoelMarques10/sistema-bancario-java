@@ -1,4 +1,4 @@
-package banco;
+package sistema;
 
 public class Conta {
     public int numConta;
