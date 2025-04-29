@@ -6,7 +6,7 @@ public class Contas {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Conta c1 = new Conta();
-        System.out.print("Qual tipo de conta você quer abrir, Poupança ou Corrente?\nResposta: ");
+        System.out.print("Qual tipo de conta você quer abrir, Poupança [CP] ou Corrente [CC]?\nResposta: ");
         String escolha = scanner.nextLine().toLowerCase(Locale.ROOT);
         c1.setEscolha(escolha);
         c1.abrirConta();
@@ -15,5 +15,4 @@ public class Contas {
         c1.pagarMensal();
         c1.resumo();
     }
-
 }

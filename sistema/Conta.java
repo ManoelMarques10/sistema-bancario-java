@@ -65,7 +65,7 @@ public class Conta {
 
     public void abrirConta() {
         this.status = true;
-        if (this.escolha.equals("poupança") || this.escolha.equals("cp")){
+        if (this.escolha.equals("poupanca") || this.escolha.equals("cp")){
             this.tipo = "Cp";
             this.saldo = 150;
         }
@@ -75,7 +75,6 @@ public class Conta {
         }
         else {
             this.status = false;
-            return;
         }
     }
 
