@@ -1,0 +1,142 @@
+package banco;
+
+public class Conta {
+    public int numConta;
+    protected String tipo;
+
+    public String getDono() {
+        return dono;
+    }
+
+    public void setDono(String dono) {
+        this.dono = dono;
+    }
+
+    private String dono;
+
+    public int getNumConta() {
+        return numConta;
+    }
+
+    public void setNumConta(int numConta) {
+        this.numConta = numConta;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getEscolha() {
+        return escolha;
+    }
+
+    public void setEscolha(String escolha) {
+        this.escolha = escolha;
+    }
+
+    private double saldo;
+    private boolean status;
+    protected String escolha;
+
+    public Conta() {
+        this.status = false;
+        this.saldo = 0;
+    }
+
+    public void abrirConta() {
+        this.status = true;
+        if (this.escolha.equals("poupança") || this.escolha.equals("cp")){
+            this.tipo = "Cp";
+            this.saldo = 150;
+        }
+        else if (this.escolha.equals("corrente") || this.escolha.equals("cc")){
+            this.tipo = "Cc";
+            this.saldo = 50;
+        }
+        else {
+            this.status = false;
+            return;
+        }
+    }
+
+    public void fecharConta() {
+        if (this.saldo > 0) {
+            System.out.println("Conta com saldo positivo. Retire os fundos antes de fechar.");
+        } else if (this.saldo < 0) {
+            System.out.println("Conta em débito. Quite a dívida antes de fechar.");
+        } else {
+            this.status = false;
+            System.out.println("Conta encerrada com sucesso.");
+        }
+    }
+
+    public void depositar(double deposito) {
+        if (this.status == true) {
+            saldo = this.saldo+deposito;
+            System.out.println("Você depositou: "+deposito);
+        } else {
+            System.out.println("Abra uma conta antes de depositar.");
+        }
+    }
+
+    public void sacar(double saque) {
+        if (this.status == true && saque <= this.saldo) {
+            saldo = this.saldo - saque;
+            System.out.println("Você sacou: "+saque);
+        } else {
+            System.out.println("Você não tem saldo suficiente para efetuar esse saque.");
+        }
+    }
+
+    public void pagarMensal() {
+        if (this.status) {
+            double mensalidade = 0;
+
+            if (this.tipo.equals("Cc")) {
+                mensalidade = 12;
+            } else if (this.tipo.equals("Cp")) {
+                mensalidade = 20;
+            } else {
+                System.out.println("Tipo de conta inválido. Mensalidade não cobrada.");
+                return;
+            }
+
+            if (this.saldo >= mensalidade) {
+                this.saldo -= mensalidade;
+                System.out.println("Mensalidade paga com sucesso.");
+            } else {
+                System.out.println("Não há saldo suficiente para pagar a mensalidade.");
+            }
+        } else {
+            System.out.println("Conta inativa, a mensalidade não será cobrada.");
+        }
+    }
+
+        public void resumo() {
+            System.out.println("Número da conta: "+this.numConta);
+            System.out.println("Tipo da conta: "+this.tipo);
+            System.out.println("Dono da conta: "+this.dono);
+            System.out.printf("Saldo da conta: R$%.2f\n", this.saldo);
+            System.out.println("A Conta em atividade: "+this.status);
+        }
+    }

@@ -1,0 +1,19 @@
+package banco;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Contas {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Conta c1 = new Conta();
+        System.out.print("Qual tipo de conta você quer abrir, Poupança ou Corrente?\nResposta: ");
+        String escolha = scanner.nextLine().toLowerCase(Locale.ROOT);
+        c1.setEscolha(escolha);
+        c1.abrirConta();
+        c1.setNumConta(133769420);
+        c1.setDono("Manoel");
+        c1.pagarMensal();
+        c1.resumo();
+    }
+
+}
